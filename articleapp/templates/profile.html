@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .top-bar {
+            background-color: #8581f3;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+        .top-bar .welcome {
+            font-size: 20px;
+            font-style: normal;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+        }
+        .search-box input[type="text"] {
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+        }
+        .search-box input[type="submit"] {
+            padding: 10px 10px;
+            border: none;
+            background-color: #555;
+            color: white;
+            border-radius: 3px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            width: 20%; /* Or desired width */
+            margin-right: 10px;
+        }
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+        .container {
+            padding: 2px 16px;
+        }
+        .button-group {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .button {
+            padding: 8px 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="welcome">Hoş Geldiniz, {{ ad_soyad }}!</div>
+        <div class="search-box">
+            <form action="" method="get">
+                <input type="text" name="q" placeholder="Arama...">
+                <input type="submit" value="Ara">
+            </form>
+        </div>
+    </div>
+    <h2>Fastext Önerileri</h2>
+    <div style="display: flex;">
+        {% for article in recommended_articles %}
+        <div class="card">
+            <div class="container">
+                <h4><a href="{% url 'makale_detay' article.id %}">{{ article.title }}</a></h4> 
+                <div class="button-group">
+                    <button class="button">Uygun</button>
+                    <button class="button">Uygun Değil</button>
+                </div> 
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <h2>SCIBERT Önerileri</h2>
+    <div style="display: flex;">
+        {% for articleSci in recommended_scibert %}
+        <div class="card">
+            <div class="container">
+                <h4><a href="{% url 'makale_detay' articleSci.id %}">{{ articleSci.title }}</a></h4> 
+                <div class="button-group">
+                    <button class="button">Uygun</button>
+                    <button class="button">Uygun Değil</button>
+                </div> 
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <h2>Başlangıç Önerileri</h2>
+    <ul>
+        {% for makale in benzer_makaleler %}
+            <li><a href="{% url 'makale_detay' makale.id %}">{{ makale.title }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,26 @@
+ <!-- Makaleleri bu template aracılığıyla mysql veritabanına kaydettik -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataset Yüklendi</title>
+</head>
+<body>
+    <h1>Dataset Başarıyla Yüklendi</h1>
+
+    <h2>Makaleler</h2>
+    <ul>
+        {% for makale in makaleler %}
+            <li>
+                <h3>{{ makale.title }}</h3>
+                <p><strong>Yazar:</strong> {{ makale.name }}</p>
+                <p><strong>Abstract:</strong> {{ makale.abstract }}</p>
+                <p><strong>Full Text:</strong> {{ makale.fulltext }}</p>
+                <p><strong>Keywords:</strong> {{ makale.keywords }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
