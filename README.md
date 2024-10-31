@@ -1,7 +1,7 @@
 # ArticleRecommandationWithNLP
 
 
-This project is made for a class homework. It is a article recommendation website using natural language processing(NLP).
+This project is made by me and my classmate [@meryemertrk](https://github.com/meryemertrk) for a class homework. It is a article recommendation website using natural language processing(NLP).
 We used Django Framework for website, Python for NLP operations, HTML for page templates and MySql for database. We used [Inspec](https://huggingface.co/datasets/midas/inspec/tree/main) dataset for articles. 
 
 The website includes login, register, home and detail pages. When user register to the website, user should fill their name, surname, e-mail, password and their interests about articles. These informations are saved to MySql database. User interest data is used for creating vectors and calculating similarity between user interests and article vectors.Home page has search bar, recommended articles based on vectors' similarity and list of clickable article titles. In detail page, you can see clicked article's detailed version.
